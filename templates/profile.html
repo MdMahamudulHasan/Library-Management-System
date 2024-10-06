@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+
+
+{% include 'header.html' %}
+
+
+
+
+<section>
+    <div class="profile-section">
+        <!-- Display the current or default profile picture -->
+        {% if user_profile.profile_picture %}
+        <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150" height="150">
+        {% else %}
+            <img id="profile-pic" src="/static/images/default_profile_picture.png" alt="Default Profile Picture" width="150" height="150">
+        {% endif %}
+
+        <!-- Form to update profile picture -->
+        <form id="profile-pic-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="profile-picture">Choose picture</label>
+            <input type="file" id="profile-picture" name="profile_picture" accept="image/*" required />
+            <input type="submit" value="Update Picture">
+        </form>
+
+        <!-- Display user details -->
+        <h1>{{ user_profile.user.first_name }} {{ user_profile.user.last_name }}</h1>
+        <p>Student</p>
+        <p>Registration No: {{ user_profile.registration_no }}</p>
+        <p>Department: {{ user_profile.department }}</p>
+        <p class="subtext">Dhaka International University</p>
+
+        <!-- Table showing user's booking history (if implemented) -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Book Title</th>
+                    <th>Issue Date</th>
+                    <th>Return Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in booking_history %}
+                <tr>
+                    <td>{{ booking.book.course_code }}</td>
+                    <td>{{ booking.book.book_title }}</td>
+                    <td>{{ booking.issue_date }}</td>
+                    <td>{{ booking.return_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- JavaScript for AJAX image upload -->
+<script>
+    document.getElementById('profile-pic-form').addEventListener('submit', function(e) {
+        e.preventDefault();  // Prevent the default form submission
+    
+        var formData = new FormData(this);  // Capture the form data
+        
+        fetch("{% url 'update-profile-picture' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                var profilePic = document.getElementById('profile-pic');
+                profilePic.src = data.new_profile_picture_url;
+                profilePic.onload = function() {
+                    profilePic.classList.add('loaded');  // Add a fade-in animation
+                };
+            } else {
+                alert(data.message || "There was an error updating your profile picture.");
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
+
+
+</script>
+
+
+        {% include 'footer.html' %}
+
+        
+        </body>
+</html>

@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.container{
+    display:flex;
+    height:100%;
+    margin:0;
+    padding :0;
+    background-color:rgb(203, 205, 206) ;
+    justify-content:center;
+    align-items: center;
+    height: 100vb;
+    width: 1640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.src{
+    border-radius: 50%;
+    padding:10px;
+    margin-left: 15%;
+}
+p{
+    font-size:50px;
+    height:45px;
+    text-align: center;
+    margin-bottom:20px;
+}
+ul li{
+    text-align: center;
+    list-style: none;
+    font-size:18px;
+}
+ul li input {
+    padding: 15px;
+    margin-top:20px;
+    background-color: rgb(21, 156, 209);
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor: pointer;
+    margin-top:30px;
+    margin-inline: 20px;
+    cursor: pointer;
+  
+}
+ul li input:hover{
+    background: rgb(55, 55, 156);
+    cursor: pointer;
+}
+/* profile.css */
+
+/* Form styling */
+#profile-pic-form {
+  margin-top: 15px; /* Add space above the form */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align form items */
+}
+
+/* File input styling */
+input[type="file"] {
+  display: block; 
+  margin: 10px 0; 
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+}
+
+
+input[type="submit"] {
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+/* Submit button hover effect */
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker shade for hover */
+}
+

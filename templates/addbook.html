@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book</title>
+    <link rel="stylesheet" href="{% static 'css/addbook.css' %}" />
+  </head>
+  <body>
+
+
+    {% include 'header.html' %}
+
+    <!-- Message Container for Success/Error Messages -->
+    <div id="message-container"></div>
+
+    <section class="book_add">
+      <div class="addbook_container">
+        <div class="main_container">
+          <div class="container">
+            <h1>Add Book</h1>
+            <form action="{% url 'add-book' %}" method="POST" enctype="multipart/form-data">
+              
+              {% csrf_token %}
+
+              <div class="upload-section">
+                <div class="upload-item">
+                  <img src="book-placeholder.png" alt="Upload Image" id="imagePreview" />
+                  <input type="file" id="imageUpload" name="bookImage" accept="image/*" hidden />
+                  <button type="button" class="upload-btn" id="imageUploadBtn">UPLOAD IMAGE</button>
+                </div>
+                <!-- Upload PDF -->
+                <div class="upload-item">
+                  <embed id="pdfPreview" width="100" height="150" type="application/pdf" hidden />
+                  <input type="file" id="pdfUpload" name="bookPDF" accept=".pdf" hidden />
+                  <button type="button" class="upload-btn" id="pdfUploadBtn">UPLOAD PDF</button>
+                  <a href="#" id="pdfLink" target="_blank" style="display:none;">View PDF</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="booksTitle" placeholder="Book Title" required />
+              </div>
+              <div class="form-group">
+                <input type="text" name="bookEdition" placeholder="Edition" required />
+              </div>
+              <div class="form-group">
+                <input type="text" name="bookId" placeholder="Book Id" required />
+              </div>
+              <div class="form-group">
+                <input type="text" name="publisherName" placeholder="Publisher Name" required />
+              </div>
+              <div class="form-group">
+                <select name="bookDepartment" required>
+                  <option value="" disabled selected>Select one...</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Physics">Physics</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="text" name="courseCode" placeholder="Course Code" required />
+              </div>
+              <div class="box-description">
+                <label for="description">Book Description</label>
+                <textarea id="description" name="bookDescription" placeholder="Write the book description here..."></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript for Image and PDF Upload -->
+    <script>
+      document.getElementById("imageUploadBtn").addEventListener("click", function () {
+        document.getElementById("imageUpload").click();
+      });
+
+      // Preview image after selecting a file
+      document.getElementById("imageUpload").addEventListener("change", function (event) {
+        const imagePreview = document.getElementById("imagePreview");
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          imagePreview.src = e.target.result;
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Trigger file manager for PDF upload
+      document.getElementById("pdfUploadBtn").addEventListener("click", function () {
+        document.getElementById("pdfUpload").click();
+      });
+
+      // Show PDF preview after selecting a file
+      document.getElementById("pdfUpload").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const pdfPreview = document.getElementById("pdfPreview");
+        const pdfLink = document.getElementById("pdfLink");
+
+        if (file) {
+          const url = URL.createObjectURL(file);
+
+          // Option 1: Show the PDF in an <embed> element
+          pdfPreview.src = url;
+          pdfPreview.hidden = false; // Show the preview
+
+          // Option 2: Show a link to open the PDF
+          pdfLink.href = url;
+          pdfLink.style.display = "block"; // Show the link
+        }
+      });
+    </script>
+
+    <!-- JavaScript for Success/Error Messages -->
+    <script>
+      // Function to show the message
+      function showMessage(message, type) {
+          const messageContainer = document.getElementById('message-container');
+          const messageElement = document.createElement('div');
+  
+          messageElement.classList.add('alert', `alert-${type}`, 'fade-in');
+          messageElement.innerHTML = `
+              <span>${message}</span>
+              <button class="close-btn">&times;</button>
+          `;
+  
+          messageContainer.appendChild(messageElement);
+  
+          // Close the message when clicking the button
+          messageElement.querySelector('.close-btn').addEventListener('click', () => {
+              hideMessage(messageElement);
+          });
+  
+          // Auto-hide the message after 5 seconds
+          setTimeout(() => {
+              hideMessage(messageElement);
+          }, 5000);
+      }
+  
+      function hideMessage(messageElement) {
+          messageElement.classList.remove('fade-in');
+          messageElement.classList.add('fade-out');
+  
+          // Remove the message after the fade-out animation
+          setTimeout(() => {
+              messageElement.remove();
+          }, 500);
+      }
+  
+      // Display Django messages automatically
+      {% if messages %}
+          {% for message in messages %}
+              showMessage("{{ message }}", "{{ message.tags }}");
+          {% endfor %}
+      {% endif %}
+  </script>
+
+    <!-- Include Footer -->
+    {% include 'footer.html' %}
+
+  </body>
+</html>

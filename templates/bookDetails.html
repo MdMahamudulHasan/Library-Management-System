@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/bookDetails.css' %}">
+  <title>{{ book.book_title }} - Book Details</title>
+</head>
+
+<body class="page-load-animation">
+
+  {% include 'header.html' %}
+  <!-- Header Loaded -->
+
+
+  <div id="message-container"></div> # if create any problem delete this and script
+
+  <section class="book-page">
+    <div class="details-container">
+      <!-- Book Image -->
+      <div class="book-image">
+        <img src="{{ book.book_image.url }}" alt="{{ book.book_title }}" />
+      </div>
+
+      <!-- Book Information -->
+      <div class="book-info">
+        <h1>{{ book.book_title }}</h1>
+        <p class="author">By: {{ book.book_author }}</p>
+        <p class="publisher"><strong>Publisher:</strong> {{ book.book_publisher }}</p>
+        <p class="course-code"><strong>Course Code:</strong> {{ book.course_code }}</p>
+
+        <!-- Book Description -->
+        <div class="book-description">
+          <h2>Description</h2>
+          <p>{{ book.book_description }}</p>
+        </div>
+
+        <!-- Buttons: Read PDF and Booking -->
+        <div class="buttons">
+          {% if book.pdf_file %}
+            <!-- Dynamically load PDF file from media directory -->
+            <button class="btn-pdf" data-pdf-url="{{ book.book_pdf.url }}" onclick="openPDF(this)">Read PDF</button>
+          {% else %}
+            <p>No PDF available for this book.</p>
+          {% endif %}
+        
+          {% if user.is_authenticated %}
+            <form action="{% url 'book-booking' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="book_id" value="{{ book.id }}">
+              <button class="btn-booking" type="submit">Booking</button>
+            </form>
+          {% else %}
+            <p><a href="{% url 'login' %}">Log in</a> to book this book.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'footer.html' %}
+  <!-- Footer Loaded -->
+
+</body>
+</html>
+
+<script>
+  function openPDF(button) {
+    const pdfURL = button.getAttribute('data-pdf-url');
+    
+    // Check if PDF URL is valid and open it in a new tab
+    if (pdfURL) {
+      window.open(pdfURL, "_blank");
+    } else {
+      alert("PDF is not available for this book.");
+    }
+  }
+
+  
+  // Function to show the message
+  function showMessage(message, type) {
+      const messageContainer = document.getElementById('message-container');
+      const messageElement = document.createElement('div');
+
+      messageElement.classList.add('alert', `alert-${type}`, 'fade-in');
+      messageElement.innerHTML = `
+          <span>${message}</span>
+          <button class="close-btn">&times;</button>
+      `;
+
+      messageContainer.appendChild(messageElement);
+
+      // Close the message when clicking the button
+      messageElement.querySelector('.close-btn').addEventListener('click', () => {
+          hideMessage(messageElement);
+      });
+
+      // Auto-hide the message after 5 seconds
+      setTimeout(() => {
+          hideMessage(messageElement);
+      }, 5000);
+  }
+
+  function hideMessage(messageElement) {
+      messageElement.classList.remove('fade-in');
+      messageElement.classList.add('fade-out');
+
+      // Remove the message after the fade-out animation
+      setTimeout(() => {
+          messageElement.remove();
+      }, 500);
+  }
+
+  // Display Django messages automatically
+  {% if messages %}
+      {% for message in messages %}
+          showMessage("{{ message }}", "{{ message.tags }}");
+      {% endfor %}
+  {% endif %}
+</script>

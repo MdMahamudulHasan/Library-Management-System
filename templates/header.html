@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+</head>
+<body>
+    <header class="navbar-no-shadow">
+        <div class="container-regular">
+            <div class="navbar-wrapper">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo">
+                </a>
+                <nav class="nav-menu-wrapper">
+                    <ul class="nav-menu">
+                        <li class="{% if request.path == '/' %} active{% endif %}">
+                            <a href="{% url 'home' %}" class="nav-lisnk">Home</a>
+                        </li>
+                        <li class="{% if request.path == '/team/' %} active{% endif %}">
+                            <a href="{% url 'team' %}" class="nav-lisnk">About</a>
+                        </li>
+                        <li class="{% if request.path == '/book-section/' %} active{% endif %}">
+                            <a href="{% url 'display-Book' %}" class="nav-lisnk">Books</a>
+                        </li>
+    
+                        <!-- Check if user is authenticated or staff is logged in via session -->
+                        {% if user.is_authenticated or request.session.staff_id %}
+                            <!-- Show the profile link -->
+                            <li class="{% if request.path == '/profile/' %} active{% endif %}">
+                                <a href="{% url 'profile' %}" class="nav-lisnk">Profile</a>
+                            </li>
+    
+                            <!-- Show booking requests if the user is a staff member -->
+                            {% if request.session.staff_id %}
+                                <li class="{% if request.path == '/view-booking-requests/' %} active{% endif %}">
+                                    <a href="{% url 'view-booking-requests' %}" class="nav-lisnk">View Bookings</a>
+                                </li>
+                            {% endif %}
+    
+                            <!-- Log out option -->
+                            <li>
+                                <form method="POST" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="nav-lisnk" style="border: none; background: none;">Log out</button>
+                                </form>
+                            </li>
+    
+                        <!-- If user is not authenticated (regular user or staff), show login and get started buttons -->
+                        {% else %}
+                        <li class="{% if request.path == '/login/' %} active{% endif %} dropdown">
+                            <a href="#" class="nav-lisnk dropdown-toggle">Log in</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url 'login' %}" class="dropdown-item">Student Login</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'staff_login' %}" class="dropdown-item">Staff Login</a>
+                                </li>
+                            </ul>
+                        </li>
+                            <li class="mobile-margin-top-10">
+                                <div class="nav-button-wrapper">
+                                    <a href="{% url 'account-create' %}" class="button-primary">Get Started</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
+

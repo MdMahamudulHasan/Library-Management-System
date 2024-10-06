@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+  .booking-section {
+    background-color:#b5b9b7;
+    padding: 40px;
+    max-width: 1640px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.booking-table th, .booking-table td {
+    padding: 15px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.booking-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    color: #333;
+}
+
+.booking-table td {
+    background-color: #fff;
+    color: #555;
+}
+
+/* Input type date styling */
+input[type="date"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Button styles */
+.confirm-btn, .decline-btn,.return-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-btn {
+    background-color: #007bff;
+}
+
+.confirm-btn:hover {
+    background-color: #0056b3;
+}
+.return-btn {
+    background-color: #55f37a;
+}
+
+.return-btn:hover {
+    background-color: #55f37a;
+}
+
+.decline-btn {
+    background-color: #dc3545;
+}
+
+.decline-btn:hover {
+    background-color: #a71d2a;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .booking-table th, .booking-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    input[type="date"], .confirm-btn, .decline-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+

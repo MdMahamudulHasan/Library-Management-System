@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Credits</title>
+    <link rel="stylesheet" href="{% static 'css/team.css' %}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+
+    <section>
+      <div class="main-container">
+        <h1>Our team</h1>
+        <p class="team">
+          A team is a group of individuals working together toward a common goal
+          by combining their skills, efforts, and perspectives.
+        </p>
+
+        <div class="cards1">
+          <div class="team-member">
+            <img
+              src="{% static 'images/jahanur-sir.jpg' %}"
+              alt="Team Member 1"
+            />
+            <h2>Mr Jahanur Biswas</h2>
+            <p>
+              Lecturer <br />
+              Dhaka International University
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img
+              src="{% static 'images/mahamudul.jpg' %}"
+              alt="Team Member 2"
+            />
+            <h2>Md Mahamudul</h2>
+            <p>
+              Student <br />
+              Dhaka International University
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="{% static 'images/joy.jpg' %}" alt="Team Member 3" />
+            <h2>Sadman Muin Joy</h2>
+            <p>
+              Student <br />
+              Dhaka International University
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

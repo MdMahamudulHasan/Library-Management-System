@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+  <footer>
+    <div class="footer-subscribe">
+      <div class="footer-container">
+        <div class="footer-wrapper-three">
+          <div class="footer-block-three">
+            <a href="{% url 'team' %}" class="footer-link-three">About us</a>
+            <a href="{% url 'display-Book' %}" class="footer-link-three">Books</a>
+            <a href="{% url 'team' %}" class="footer-link-three">Contact</a>
+          </div>
+          <div class="footer-social-block-three">
+            <a href="https://www.facebook.com/diu.net.bd" class="footer-social-link-three"><img src="{% static 'images/fb-icon.png' %}" alt="Facebook Icon"></a>
+            <a href="#" class="footer-social-link-three"><img src="{% static 'images/twitter-icon.png' %}" alt="Twitter Icon"></a>
+            <a href="#" class="footer-social-link-three"><img src="{% static 'images/instagram-icon (1).png' %}" alt="Instagram Icon"></a>
+            <a href="https://www.youtube.com/@diudhaka" class="footer-social-link-three"><img src="{% static 'images/youtube-icon.png' %}" alt=""></a>
+          </div>
+        </div>
+        <div class="footer-divider-two"></div>
+        <div class="footer-bottom">
+          <div class="footer-copyright">@ 2022 Dhaka International University Library.</div>
+          <div class="footer-legal-block">
+            <a href="#" class="footer-legal-link">Terms Of Use</a>
+            <a href="#" class="footer-legal-link">Privecy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Card</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  </head>
+  <body>
+
+
+    {% include 'header.html' %}
+
+
+    <section>
+      <div class="container">
+        <div class="container">
+          <div class="card">
+            <h2>Log in</h2>
+            <form action="/login/" method="POST">
+              {% csrf_token %}
+              <input type="email" placeholder="Email address" name="email" required />
+              <input type="password" name="password" placeholder="Enter your password" value="{{ request.GET.password|default:'' }}" required />
+              <input type="submit" value="Submit" />
+              <p>Are you new here? <a href="{% url 'account-create' %}">Create an account</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+
+    {% include 'footer.html' %}
+
+
+    
+  </body>
+</html>

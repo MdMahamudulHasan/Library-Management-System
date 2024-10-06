@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery of Books</title>
+  <link rel="stylesheet" href="{% static 'css/displayBook.css' %}">
+</head>
+<body>
+  {% include 'header.html' %}
+
+  <div id="message-container"></div> # if creaete any problem delete this and script
+
+  <section>
+    <div class="main-container">
+      <div class="box">
+        <h1>Books</h1><br>
+        <p>"That is part of the beauty of all literature.<br>
+            You discover that your longings are universal longings,<br> that you're not lonely and isolated from anyone.<br> You belong."</p>
+      </div>
+
+      <!-- Search Form -->
+      <form action="{% url 'display-Book' %}" method="GET" class="form">
+        <div class="box2">
+          <label for="search">Search</label>
+          <input type="text" id="search" name="search" placeholder="search...." value="{{ request.GET.search }}">
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+
+      <!-- Display Books -->
+      <div class="card-container">
+        {% for book in books %}
+        <div class="book-card">
+            <img src="{{ book.book_image.url }}" alt="{{ book.book_title }}">
+            <h3>{{ book.book_title }}</h3>
+            <p class="details">Publisher: {{ book.book_publisher }}</p>
+            <p class="course-code">Course Code: {{ book.course_code }}</p>
+
+
+
+            <div class="buttons">
+              {% if user.is_authenticated %}
+              <form action="{% url 'book-booking' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="book_id" value="{{ book.id }}">
+                <button type="submit" class = "button1">Booking</button>
+              </form>
+              {% endif %}
+              <a href="{% url 'book-details' book.id %}"><button class="button2">Details</button></a>
+            </div>
+            
+
+
+            
+        </div>
+        {% empty %}
+        <p>No books available at the moment.</p>
+        {% endfor %}
+    </div>
+    
+    </div>
+  </section>
+
+  {% include 'footer.html' %}
+</body>
+</html>
+
+
+
+
+<script>
+  // Function to show the message
+  function showMessage(message, type) {
+      const messageContainer = document.getElementById('message-container');
+      const messageElement = document.createElement('div');
+
+      messageElement.classList.add('alert', `alert-${type}`, 'fade-in');
+      messageElement.innerHTML = `
+          <span>${message}</span>
+          <button class="close-btn">&times;</button>
+      `;
+
+      messageContainer.appendChild(messageElement);
+
+      // Close the message when clicking the button
+      messageElement.querySelector('.close-btn').addEventListener('click', () => {
+          hideMessage(messageElement);
+      });
+
+      // Auto-hide the message after 5 seconds
+      setTimeout(() => {
+          hideMessage(messageElement);
+      }, 5000);
+  }
+
+  function hideMessage(messageElement) {
+      messageElement.classList.remove('fade-in');
+      messageElement.classList.add('fade-out');
+
+      // Remove the message after the fade-out animation
+      setTimeout(() => {
+          messageElement.remove();
+      }, 500);
+  }
+
+  // Display Django messages automatically
+  {% if messages %}
+      {% for message in messages %}
+          showMessage("{{ message }}", "{{ message.tags }}");
+      {% endfor %}
+  {% endif %}
+</script>

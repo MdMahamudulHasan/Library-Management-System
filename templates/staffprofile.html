@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Profile</title>
+    <link rel="stylesheet" href="{% static 'css/staffprofile.css' %}">
+</head>
+<body>
+
+
+
+{% include 'header.html' %}
+
+
+
+
+<section>
+    <div class="container">
+        <div class="img">
+            <!-- Show the default or user-uploaded profile picture -->
+            <img id="profile-pic" src="{% static 'images/staff.jpg' %}" width="230px" height="230px" class="src"><br>
+            <ul>
+                <p>{{ staff.staff_first_name }} {{ staff.staff_last_name }}</p>
+                <li><b>{{ staff.staff_user_name }}</b></li>
+                <li>Department: {{ staff.staff_department }}</li>
+                <li>{{ staff.staff_position }}</li>
+                <li>Email: {{ staff.staff_email }}</li>
+                <li>Phone No: {{ staff.staff_phone_number }}</li>
+                <li>
+                    <a href="{% url 'add-book' %}">
+                        <input type="button" value="Add Book">
+                    </a>
+                    <a href="{% url 'view-booking-requests' %}">
+                        <input type="button" value="Booking Request">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+        {% include 'footer.html' %}
+
+        
+        </body>
+        </html>
+       
+       

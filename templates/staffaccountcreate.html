@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Account Create</title>
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+</head>
+<body>
+
+
+{% include 'header.html' %}
+
+
+
+    <section>
+    <div class="main-container">
+        <div class="container">
+        <form action="{% url 'staff_account_create' %}" method="POST">
+            {% csrf_token %}
+            <div class="title">Staff Create Account</div>
+            <div class="input-box">
+                <div class="input-field">
+                    <span class="name">Staff First Name</span>
+                    <input type="text" id="firstName" name="staff_firstName" required>
+                </div>
+                <div class="input-field">
+                    <span class="name">Staff Phone Number</span>
+                    <input type="text" id="phn" name="staff_phn" required>
+                </div>
+                <div class="input-field">
+                    <span class="name">Staff Last Name</span>
+                    <input type="text" id="tName" name="staff_tName" required>
+                </div>
+                
+                <div class="input-field">
+                    <span class="name">Department</span>
+                    <select id="department" name="staff_department" required>
+                        <option value="CSE">CSE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="English">English</option>
+                        <option value="CIVIL">CIVIL</option>
+                        <option value="Political Science">Political Science</option>
+                        <option value="Sociology">Sociology</option>
+                        <option value="Microbiology">Microbiology</option>
+                        <option value="Economics">Economics</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <span class="name">Staff User Name</span>
+                    <input type="text" id="user" name="staff_user" required>
+                </div>
+                <div class="input-field">
+                    <span class="name">Staff Email Address</span>
+                    <input type="email" id="mail" name="staff_email" required>
+                </div>
+                
+                <div class="input-field">
+                    <span class="name">Staff Possition</span>
+                    <input type="text" id="regNo" name="staff_position">
+                </div>
+                <div class="input-field">
+                    <span class="name">Password</span>
+                    <input type="password" id="password" name="staff_password" required>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="Submit">
+            </div>
+            <p>Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
+        </form>        
+            </div>
+    </div>
+    </section>
+
+
+
+    {% include 'footer.html' %}
+
+
+
+
+    </body>
+    </html>

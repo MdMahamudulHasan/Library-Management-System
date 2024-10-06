@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff Login Card</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  </head>
+  <body>
+
+
+    {% include 'header.html' %}
+
+
+    <section>
+      <div class="container">
+        <div class="container">
+          <div class="card">
+            <h2>Staff Log in</h2>
+            <form action="{% url 'staff_login' %}" method="POST">
+              {% csrf_token %}
+              <input type="email" placeholder="Email address" name="staff_email" required />
+              <input type="password" name="staff_password" placeholder="Enter your password" required />
+              <input type="submit" value="Submit" />
+            </form>            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+
+    {% include 'footer.html' %}
+
+
+    
+  </body>
+</html>

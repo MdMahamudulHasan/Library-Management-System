@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+
+  justify-content: center;
+  align-items: center;
+  width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.team {
+  text-align: center;
+}
+
+.cards1 {
+  height: 35%;
+}
+
+.team-member {
+  text-align: center;
+  margin: 20px;
+  float: left;
+}
+
+.team-member img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #007bff; /* Border color can be customized */
+}
+
+.team-member h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.team-member p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cards1,
+.cards2 {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
+.team-member {
+  margin: 10px; /* Adjust margin as needed */
+  text-align: center; /* Center text within each card */
+  width: 250px;
+}

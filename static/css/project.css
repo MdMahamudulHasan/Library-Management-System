@@ -1,0 +1,112 @@
+
+
+.main-container{
+    display:flex;
+    height:100vh;
+    justify-content:center;
+    align-items: center;
+    padding:10px;
+    background-color:rgb(203, 205, 206) ;
+    width: 1640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif; 
+}
+.container{
+    width:1000px;
+    height: 700px;
+    background: white;
+    padding:10px ;
+    border-radius:20px;
+    border:solid 1px black;
+    text-align: center;
+}
+.container .title{
+    font-size:35px;
+    font-weight:500;
+    text-align: center;
+    padding:40px;
+    color:#777379
+}
+.container form .input-box{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+form .input-box .input-field{
+    width:calc(100% / 2 - 20px);
+}
+header .active a{
+  background-color: #2283bf;
+  border-bottom: 1px solid #000;
+}
+.input-box .input-field .name{
+    display:block;
+    font-weight:500;
+    margin-bottom:5px;
+    color:#777379;
+    text-align: left;
+}
+.input-box .input-field input{
+    height:45px;
+    width:100%;
+    outline:none;
+    border-radius:20px;
+    border:0px solid #ccc;
+    padding-left:15px;
+    font-size:16px;
+    border-bottom-width:2px;
+    transition:all 0.3s ease;
+    
+}
+.input-box .input-field input:focus,
+.input-box .input-field input:valid{
+    border-color:#a29ba5
+}
+form .button{
+    height:45px;
+    margin:10px;
+    text-align: center;
+    cursor: pointer;
+}
+form .button input{
+    height:100%;
+    width:400px;
+    outline:none;
+    color:rgb(250, 248, 248);
+    border:none;
+    font-size:18px;
+    font-weight:500;
+    letter-spacing:1px;
+    background: rgb(95, 128, 235);
+    border-radius:10px;
+    cursor: pointer;
+    
+}
+form .button input:hover{
+    background: rgb(184, 184, 209);
+    color: black;
+    cursor: pointer;
+}
+p{
+    text-align: center;
+    margin-bottom: 90px;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    border:0px solid #ccc;
+    border-bottom-width:2px;
+}
+

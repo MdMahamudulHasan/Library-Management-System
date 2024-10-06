@@ -1,0 +1,78 @@
+<!-- home.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+  
+  {% include 'header.html' %}
+
+
+
+<section>
+    <div class="testimonial-container">
+        <div class="second-container">
+            <h2 class="centered-heading">A Few Words about the library</h2>
+            <div class="testimonial-grid-two">
+                <div class="testimonial-card">
+                    <p class="testimonial-text-two">&quot;Today a reader, <br>tomorrow a leader.&quot;</p>
+                    <div class="testimonial-info-three">
+                        <img class="testimonial-image" src="{% static 'images/M fuller.jpg' %}" alt="">
+                        <div>
+                            <h3 class="testimonial-main-heading">Margarent Fuller</h3>
+                            <div class="text-block">First American female war correspondent</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text-two">&quot;Bad libraries build collection, good libraries build services, great libraries build communities.&quot;</p>
+                    <div class="testimonial-info-three">
+                        <img class="testimonial-image" src="{% static 'images/R David.jpg' %}" alt="">
+                        <div>
+                            <h3 class="testimonial-main-heading">R. David Lankes</h3>
+                            <div class="text-block">Professor of Librarianship at the University of Texas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text-two">&quot;I have found the most valuable thing in my wallet is my library card.&quot;</p>
+                    <div class="testimonial-info-three">
+                        <img class="testimonial-image" src="{% static 'images/Bush.jpg' %}" alt="">
+                        <div>
+                            <h3 class="testimonial-main-heading">Laura Bush</h3>
+                            <div class="text-block">Librarian and 43rd President of the United States.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="features-metrics">
+        <div class="features-wrapper">
+            <div class="features-block">
+                <div class="features-title">10000+</div>
+                <div>Books in library</div>
+            </div>
+            <div class="features-block">
+                <div class="features-title">8</div>
+                <div>Departments of books</div>
+            </div>
+            <div class="features-block">
+                <div class="features-title">15000+</div>
+                <div>University students</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+
+  color: #333;
+}
+
+section {
+  padding: 40px 20px;
+}
+
+.main-container {
+  height: 100%;
+  background-color: #b5b9b7;
+  width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.box p {
+  margin-top: 25px;
+}
+
+.form {
+  /* margin-bottom: 40px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 30px; */
+  margin-right: 40px;
+}
+
+.box2 {
+  margin-bottom: 15px;
+  margin-left: 8%;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.box2 label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.box2 input[type="text"] {
+  width: 90%;
+  padding: 20px;
+  border: 0px solid #5a5858;
+  border-radius: 10px;
+  border-bottom-width: 2px;
+  height: 25px;
+}
+
+.form .button {
+  height: 45px;
+  margin: 10px;
+  text-align: center;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.form .button input {
+  height: 100%;
+  width: 450px;
+  outline: none;
+  color: rgb(250, 248, 248);
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgb(81, 118, 238);
+  border-radius: 10px;
+  transition: width 1s, height 1s;
+}
+
+.form .button input:hover {
+  background: rgb(129, 129, 245);
+  height: 100%;
+  width: 500px;
+  box-shadow: 2px 2px rgb(99, 94, 94);
+  cursor: pointer;
+}
+/* i change hare normal form to class form if create any problem just change this  */
+
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* gap: 20px; */
+}
+
+.book-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  box-shadow: 10px 7px 20px #0056b3;
+  width: 300px;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  width: 150px;
+  height: 200px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.book-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.book-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.book-card .buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.book-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.book-card button:hover {
+  background-color: #0056b3;
+}
+
+.book-card button:focus {
+  outline: none;
+}
+
+.book-card .details {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.book-card .course-code {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.container {
+  width: 300px;
+  height: 590px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.container img {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+span {
+  font-size: 15px;
+}
+
+.container p {
+  margin-top: 25px;
+  line-height: 18px;
+  padding: 10px;
+}
+
+table {
+  width: 80%;
+  margin-left: 10%;
+  line-height: 30px;
+}
+
+ul {
+  display: flex;
+}
+
+.button {
+  height: 45px;
+  text-align: center;
+  margin-left: 3px;
+  margin-left: 30px;
+  margin-right: 20px;
+  transition: 0.5s;
+}
+
+.button input {
+  height: 100%;
+  width: 90px;
+  outline: none;
+  color: rgb(250, 248, 248);
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgb(95, 128, 235);
+  border-radius: 10px;
+}
+
+.button input:hover {
+  background: rgb(192, 247, 217);
+  border: 1px solid black;
+  color: black;
+}
+
+th,
+td {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 30px;
+  padding-right: 40px;
+}

@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Main Section (Add Book Form) */
+.addbook_container {
+  font-family: Arial, sans-serif;
+  background-color: #b5b9b7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.book_add {
+  max-width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  text-align: center;
+}
+
+.upload-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.upload-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  min-height: 220px;
+  position: relative;
+}
+.upload-item img,
+.upload-item embed {
+  width: 100px;
+  height: 150px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+.upload-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  padding: 10px 0;
+}
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Style for the Description Box */
+.box-description {
+  margin-top: 20px;
+  padding: 10px;
+}
+.box-description label {
+  font-size: 16px;
+  color: #333;
+}
+.box-description textarea {
+  width: 90%;
+  height: 150px;
+  padding: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical;
+}
+.box-description textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+.box-description textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+
+
+
+
+
+
+#message-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert {
+  padding: 15px 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+}
+
+.alert-success {
+  background-color: #28a745;
+}
+
+.alert-error {
+  background-color: #dc3545;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+}

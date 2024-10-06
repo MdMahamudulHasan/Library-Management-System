@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Books</title>
+    <link rel="stylesheet" href="{% static 'css/requestPage.css' %}">
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+    <div id="message-container"></div> # Extra add , if any problem create here delete this and script
+    
+    <section>
+        <div class="booking-section">
+            <h2>Booking Requests</h2>
+            <table class="booking-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Book</th>
+                        <th>Request Date</th>
+                        <th>Status</th>
+                        <th>Issue Date</th>
+                        <th>Return Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.user.username }}</td>
+                        <td>{{ booking.book.book_title }}</td>
+                        <td>{{ booking.request_date }}</td>
+                        <td>{{ booking.status|title }}</td>
+                        <form action="{% url 'update-booking-status' booking.id 'confirm' %}" method="POST">
+                            {% csrf_token %}
+                            <td>
+                                {% if booking.status == 'pending' %}
+                                    <input type="date" name="issue_date" required>
+                                {% else %}
+                                    {{ booking.issue_date }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if booking.status == 'pending' %}
+                                    <input type="date" name="return_date" required>
+                                {% else %}
+                                    {{ booking.return_date }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if booking.status == 'pending' %}
+                                    <button type="submit" class="confirm-btn">Confirm</button>
+                                </form>
+                                <a href="{% url 'update-booking-status' booking.id 'decline' %}">
+                                    <button class="decline-btn">Decline</button>
+                                </a>
+                                {% elif booking.status == 'confirmed' %}
+                                    <a href="{% url 'update-booking-status' booking.id 'return' %}">
+                                        <button class="return-btn">Mark as Returned</button>
+                                    </a>
+                                    {% elif booking.status == 'Book Returned' %}
+                                        <span>Book Returned</span> 
+                                {% else %}
+                                    {{ booking.status|title }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No booking requests available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+</body>
+</html>
+
+
+
+<script>
+    // Function to show the message
+    function showMessage(message, type) {
+        const messageContainer = document.getElementById('message-container');
+        const messageElement = document.createElement('div');
+
+        messageElement.classList.add('alert', `alert-${type}`, 'fade-in');
+        messageElement.innerHTML = `
+            <span>${message}</span>
+            <button class="close-btn">&times;</button>
+        `;
+
+        messageContainer.appendChild(messageElement);
+
+        // Close the message when clicking the button
+        messageElement.querySelector('.close-btn').addEventListener('click', () => {
+            hideMessage(messageElement);
+        });
+
+        // Auto-hide the message after 5 seconds
+        setTimeout(() => {
+            hideMessage(messageElement);
+        }, 5000);
+    }
+
+    function hideMessage(messageElement) {
+        messageElement.classList.remove('fade-in');
+        messageElement.classList.add('fade-out');
+
+        // Remove the message after the fade-out animation
+        setTimeout(() => {
+            messageElement.remove();
+        }, 500);
+    }
+
+    // Display Django messages automatically
+    {% if messages %}
+        {% for message in messages %}
+            showMessage("{{ message }}", "{{ message.tags }}");
+        {% endfor %}
+    {% endif %}
+</script>

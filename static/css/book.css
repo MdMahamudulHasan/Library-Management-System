@@ -1,0 +1,134 @@
+.add-book-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #cacdc9;
+  width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+}
+header .active a{
+  background-color: #2283bf;
+  border-bottom: 1px solid #000;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+p {
+  font-size: 30px;
+  color: rgb(70, 65, 65);
+  text-align: center;
+}
+.box {
+  width: 500px;
+  height: 600px;
+  margin: 50px;
+  border: 1px solid #272626;
+  padding: 30px;
+  border-radius: 15px;
+  background: #faf8f8;
+  justify-content: right;
+}
+ul {
+  display: flex;
+  list-style: none;
+}
+ul img {
+  padding: 60px;
+}
+.form-group {
+  margin-bottom: 2px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 0px;
+  border: 0px solid #ccc;
+  border-radius: 3px;
+  border-radius: 20px;
+  border-bottom-width: 1px;
+}
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  border: 0px solid #ccc;
+  border-bottom-width: 2px;
+}
+form .button {
+  height: 45px;
+  margin: 10px;
+  text-align: center;
+}
+form .button input {
+  height: 100%;
+  width: 300px;
+  outline: none;
+  color: rgb(250, 248, 248);
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgb(81, 118, 238);
+  border-radius: 10px;
+  transition: width 1s, height 1s;
+}
+form .button input:hover {
+  background: rgb(129, 129, 245);
+  height: 100%;
+  width: 350px;
+  box-shadow: 2px 2px rgb(99, 94, 94);
+}
+
+.uploader-container {
+  position: relative;
+  width: 400px;
+  height: 500px;
+}
+
+input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.preview-container {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

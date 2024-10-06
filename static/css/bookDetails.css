@@ -1,0 +1,111 @@
+/* Scoped book details page */
+.book-page {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.book-page .details-container {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Book Image with Animation */
+.book-page .book-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transition: transform 0.5s ease; */
+  /* box-shadow: 2px 2px 2px 2px #007bff; */
+  border: 1px solid #007bff;
+}
+
+.book-page .book-image img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  /* transition: transform 0.5s ease-in-out; */
+}
+
+.book-page .book-image:hover img {
+  transform: scale(1.1); /* Zoom-in effect */
+}
+
+/* Book Info Section */
+.book-page .book-info {
+  flex: 2;
+  padding: 20px;
+  /* animation: fadeInUp 1s ease-in-out; */
+}
+
+.book-page .book-info h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+  /* animation: fadeInLeft 0.8s ease-out; */
+}
+
+.book-page .book-info p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  /* animation: fadeInLeft 0.8s ease-out; */
+}
+
+.book-page .book-info .author {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.book-page .book-info .course-code {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.book-page .book-description h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.book-page .book-description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Buttons with Bounce Animation */
+.book-page .buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.book-page .buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  /* transition: background-color 0.3s ease, transform 0.3s ease; */
+}
+
+.book-page .buttons button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); 
+}
+
+.book-page .buttons .btn-pdf {
+  background-color: #28a745;
+}
+
+.book-page .buttons .btn-pdf:hover {
+  background-color: #218838;
+  transform: scale(1.1); /* Slight bounce effect */
+}
