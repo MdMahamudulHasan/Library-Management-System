@@ -6,7 +6,7 @@ This is a web-based Library Management System built using **HTML**, **CSS**, **J
 This project was developed as part of my **5th semester** university coursework. The primary goal is to demonstrate my ability to build a functional library management system, based on instructions provided by my course teacher. It showcases the key concepts learned during the course, including user account management, book booking systems, and staff roles.
 
 ## Features
-### **Student App**:
+### **My App / Student App**:
 - **Account Creation & Login**: Students can create an account, log in, and book books.
 - **Booking Requests**: Students can send booking requests for books and check their booking status.
 - **Profile Management**: Students can view and update their profile, including changing their profile picture.
